@@ -9,6 +9,14 @@ const config = {
     entry: {
         index: resolve(__dirname, '../src/debug.tsx')
     },
+    module: {
+        rules: [
+            {
+                test: /\.mp3$/,
+                type: 'asset/resource',
+            }
+        ]
+    },
     devServer: {
         port: 10086,
     }

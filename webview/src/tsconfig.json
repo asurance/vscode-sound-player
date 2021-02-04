@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es2017",
         "module": "ESNext",
         "jsx": "react",
         "sourceMap": true,
@@ -12,6 +12,6 @@
         "strictPropertyInitialization": true,
         "alwaysStrict": true,
         "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
     }
 }

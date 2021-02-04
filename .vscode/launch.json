@@ -23,8 +23,8 @@
             "webRoot": "${workspaceFolder}/webview",
             "internalConsoleOptions": "neverOpen",
             "sourceMaps": true,
-            "pathMapping": {
-                "webpack:///.": "${workspaceFolder}/webview"
+            "sourceMapPathOverrides": {
+                "webpack://vscode-sound-player/./*": "${workspaceFolder}/*"
             }
         }
     ]
