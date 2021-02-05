@@ -4,7 +4,7 @@ import { SoundPlayerProvider } from './SoundPlayerProvider'
 export function activate(context: ExtensionContext): void {
     context.subscriptions.push(window.registerCustomEditorProvider('asurance.soundplayer', new SoundPlayerProvider(context), {
         webviewOptions: {
-            retainContextWhenHidden: false
+            retainContextWhenHidden: true
         },
         supportsMultipleEditorsPerDocument: true,
     }))

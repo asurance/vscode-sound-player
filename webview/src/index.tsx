@@ -1,12 +1,21 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './App'
+import Error from './Error'
+import Loading from './Loading'
 import SoundPlayer from './SoundPlayer'
 
-window.addEventListener('message', (ev) => {
-    if (ev.data.type === 'audioData') {
-        render(<SoundPlayer audioData={ev.data} />, document.getElementById('main'))
+const root = document.getElementById('main')!
+
+render(< Loading />, root)
+
+window.addEventListener('message', (ev: MessageEvent<AudioData | ErrorMessage>) => {
+    switch (ev.data.type) {
+        case 'audioData':
+            render(<SoundPlayer audioData={ev.data} />, root)
+            break
+        case 'error':
+            render(<Error message={ev.data.message} />, root)
+            break
+
     }
 })
-
-render(<App />, document.getElementById('main'))

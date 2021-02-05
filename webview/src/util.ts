@@ -16,8 +16,8 @@ export let GetAudioBuffer = (data: AudioData): AudioBuffer => {
         } else {
             pre = data
             cache = context.createBuffer(data.numberOfChannels, data.length, data.sampleRate)
-            for (const [channelNumber, channelData] of data.channels.entries()) {
-                cache.copyToChannel(Float32Array.from(channelData), channelNumber)
+            for (let i = 0; i < data.numberOfChannels; i++) {
+                cache.copyToChannel(Float32Array.from(data.channels.slice(data.length * i, data.length * (i + 1))), i)
             }
             return cache
         }

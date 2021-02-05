@@ -17,17 +17,32 @@ async function DecodeAudio(url: string) {
 async function main() {
     await import('./index')
     const [audioBuffer] = await Promise.all([DecodeAudio(test), Wait(5000)])
-    const data: AudioData = {
-        numberOfChannels: audioBuffer.numberOfChannels,
-        length: audioBuffer.length,
-        sampleRate: audioBuffer.sampleRate,
-        channels: []
+    const needError = true
+    if (needError) {
+        const error: ErrorMessage = {
+            type: 'error',
+            message: 'mock error'
+        }
+        postMessage(error, '*')
+    } else {
+        const channelData: number[] = []
+        for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
+            const buffer = audioBuffer.getChannelData(i)
+            channelData.push(...buffer)
+        }
+        const data: AudioData = {
+            type: 'audioData',
+            numberOfChannels: audioBuffer.numberOfChannels,
+            length: audioBuffer.length,
+            sampleRate: audioBuffer.sampleRate,
+            channels: []
+        }
+        for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
+            const buffer = audioBuffer.getChannelData(i)
+            data.channels.push(...buffer)
+        }
+        postMessage({ ...data, type: 'audioData' }, '*')
     }
-    for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
-        const buffer = audioBuffer.getChannelData(i)
-        data.channels.push(Array.from(buffer))
-    }
-    postMessage({ ...data, type: 'audioData' }, '*')
 }
 
 window.acquireVsCodeApi = () => {

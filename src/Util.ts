@@ -24,6 +24,16 @@ export async function LoadArrayBuffer(uri: Uri): Promise<ArrayBuffer> {
 
 const context = new AudioContext()
 
-export function DecodeAudio(buffer: ArrayBuffer): Promise<AudioBuffer> {
-    return new Promise(resolve => context.decodeAudioData(buffer, resolve))
+export async function DecodeAudio(buffer: ArrayBuffer): Promise<AudioBuffer> {
+    return new Promise((resolve, reject) => context.decodeAudioData(buffer, resolve, reject))
+}
+
+export function LogError(err: unknown): string {
+    if (typeof err === 'string') {
+        return err
+    } else if (typeof (err as { message: string }).message === 'string') {
+        return (err as { message: string }).message
+    } else {
+        return 'unknown error'
+    }
 }

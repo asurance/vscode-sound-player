@@ -11,8 +11,14 @@ declare module '*.mp3' {
 }
 
 declare type AudioData = {
+    type: 'audioData'
     numberOfChannels: number,
     length: number,
     sampleRate: number,
-    channels: number[][],
+    channels: number[],
+}
+
+declare type ErrorMessage = {
+    type: 'error',
+    message: string,
 }

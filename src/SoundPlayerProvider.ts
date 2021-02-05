@@ -1,6 +1,6 @@
 import { CustomReadonlyEditorProvider, ExtensionContext, Uri, WebviewPanel } from 'vscode'
 import { SoundPlayerDocument } from './SoundPlayerDocument'
-import { DecodeAudio, GetWebviewContent } from './Util'
+import { GetWebviewContent } from './Util'
 
 export class SoundPlayerProvider implements CustomReadonlyEditorProvider<SoundPlayerDocument> {
 
@@ -20,17 +20,7 @@ export class SoundPlayerProvider implements CustomReadonlyEditorProvider<SoundPl
         }
         const html = await this.html
         webviewPanel.webview.html = html
-        const buffer = await document.buffer
-        const audioBuffer = await DecodeAudio(buffer)
-        const auidoData: AudioData = {
-            numberOfChannels: audioBuffer.numberOfChannels,
-            length: audioBuffer.length,
-            sampleRate: audioBuffer.sampleRate,
-            channels: []
-        }
-        for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
-            auidoData.channels.push(Array.from(audioBuffer.getChannelData(i)))
-        }
-        webviewPanel.webview.postMessage({ ...auidoData, type: 'audioData' })
+        const result = await document.parseResult
+        webviewPanel.webview.postMessage(result)
     }
 }
