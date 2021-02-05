@@ -55,6 +55,7 @@
     "activationEvents": [
         "onCustomEditor:asurance.soundplayer"
     ],
+    "icon": "icon.gif",
     "contributes": {
         "customEditors": [
             {
@@ -70,7 +71,7 @@
         ]
     },
     "engines": {
-        "vscode": "^1.51.0"
+        "vscode": "^1.52.0"
     },
     "scripts": {
         "vscode:prepublish": "npm run build:prod",
