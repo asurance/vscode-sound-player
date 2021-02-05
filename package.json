@@ -2,8 +2,25 @@
     "name": "vscode-sound-player",
     "version": "0.0.1",
     "main": "./dist/extension.js",
-    "repository": "https://github.com/asurance/vscode-sound-player.git",
+    "repository": {
+        "url": "https://github.com/asurance/vscode-sound-player.git"
+    },
+    "homepage": "https://github.com/asurance/vscode-sound-player/blob/master/README.md",
+    "bugs": {
+        "url": "https://github.com/asurance/vscode-sound-player/issues"
+    },
     "author": "asurance <784672616@qq.com>",
+    "publisher": "asurance",
+    "displayName": "声音播放器",
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "mp3",
+        "sound",
+        "audio",
+        "player"
+    ],
     "license": "MIT",
     "preview": true,
     "private": true,
