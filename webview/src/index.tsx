@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import Error from './Error'
 import Loading from './Loading'
 import SoundPlayer from './SoundPlayer'
+import './index.css'
 
 const root = document.getElementById('main')!
 

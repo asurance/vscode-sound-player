@@ -7,5 +7,5 @@ type Props = {
 export default function Error({
     message,
 }: Readonly<Props>): ReactElement {
-    return <span>{message}</span>
+    return <span>{`音频解析错误:${message}`}</span>
 }
