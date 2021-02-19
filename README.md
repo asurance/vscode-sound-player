@@ -8,10 +8,10 @@
 
 ## 技术点
 * webview端使用[React](https://react.docschina.org/languages)
-* extension端使用[web-audio-api](https://github.com/audiojs/web-audio-api)解码
+* webview端使用[audio-file-decoder](https://github.com/aeroheim/audio-file-decoder)解码
 
 ## 问题
-因为发现`web-audio-api`进行音频(目前看似乎是长音频)解码时会解码失败，所以该插件也就凑合着用吧，暂时也不算继续开发。
+`audio-file-decoder`在解码多声道音频时会只有单声道的数据且似乎有几率有问题
 
 ## 额外
 如果你有知道有其他nodejs端进行音频解码的库，欢迎给我提[issue](https://github.com/asurance/vscode-sound-player/issues)好继续开发。
