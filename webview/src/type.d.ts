@@ -10,15 +10,7 @@ declare module '*.mp3' {
     export default context
 }
 
-declare type AudioData = {
-    type: 'audioData'
-    numberOfChannels: number,
-    length: number,
-    sampleRate: number,
-    channels: number[],
-}
-
-declare type ErrorMessage = {
-    type: 'error',
-    message: string,
+declare module '*.wasm' {
+    const context: string
+    export default context
 }

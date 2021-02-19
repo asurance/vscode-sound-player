@@ -19,8 +19,7 @@ export class SoundPlayerProvider implements CustomReadonlyEditorProvider<SoundPl
             enableScripts: true
         }
         const html = await this.html
-        webviewPanel.webview.html = html
-        const result = await document.parseResult
-        webviewPanel.webview.postMessage(result)
+        webviewPanel.webview.html = html.replace(/<meta id="source".*?\/>/,
+            `<meta id="source" src="${webviewPanel.webview.asWebviewUri(document.uri)}">`)
     }
 }

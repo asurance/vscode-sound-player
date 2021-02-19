@@ -12,6 +12,7 @@
         "strictPropertyInitialization": true,
         "alwaysStrict": true,
         "esModuleInterop": true,
+        "moduleResolution": "node",
         "forceConsistentCasingInFileNames": true,
     }
 }

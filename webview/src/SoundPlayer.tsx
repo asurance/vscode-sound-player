@@ -1,55 +1,61 @@
+import { AudioDecoder } from 'audio-file-decoder'
 import React, { PureComponent, ReactElement } from 'react'
-import { GetAudioBuffer, GetAudioContext } from './util'
 
 type Props = {
-    audioData: AudioData;
+    audioDecoder: AudioDecoder;
 }
 
 type State = {
-    isPlaying: boolean
+    audioNode: AudioBufferSourceNode | null
 }
+
+const audioContext = new AudioContext()
 
 export default class SoundPlayer extends PureComponent<Props, State>{
 
-    private audioNode: AudioBufferSourceNode | null = null
+    private audioBuffer: AudioBuffer
 
     constructor(props: Readonly<Props>) {
         super(props)
         this.state = {
-            isPlaying: false
+            audioNode: null
+        }
+        const { audioDecoder } = props
+        const audioData = audioDecoder.decodeAudioData()
+        this.audioBuffer = audioContext.createBuffer(audioDecoder.channelCount, audioData.length, audioDecoder.sampleRate)
+        for (let i = 0; i < audioDecoder.channelCount; i++) {
+            this.audioBuffer.copyToChannel(audioData, i)
         }
     }
 
     private onClickStop = () => {
-        if (this.audioNode === null) return
-        this.audioNode.stop()
+        const {
+            audioNode,
+        } = this.state
+        if (audioNode) {
+            audioNode.stop()
+        }
         this.onPlayEnded()
     }
 
     private onClickStart = () => {
-        const {
-            audioData,
-        } = this.props
-        const audioContext = GetAudioContext()
-        const audioBuffer = GetAudioBuffer(audioData)
-        this.audioNode = audioContext.createBufferSource()
-        this.audioNode.buffer = audioBuffer
-        this.audioNode.addEventListener('ended', this.onPlayEnded)
-        this.audioNode.connect(audioContext.destination)
-        this.audioNode.start()
-        this.setState({ isPlaying: true })
+        const audioNode = audioContext.createBufferSource()
+        audioNode.buffer = this.audioBuffer
+        audioNode.addEventListener('ended', this.onPlayEnded)
+        audioNode.connect(audioContext.destination)
+        audioNode.start()
+        this.setState({ audioNode })
     }
 
     private onPlayEnded = () => {
-        this.audioNode = null
-        this.setState({ isPlaying: false })
+        this.setState({ audioNode: null })
     }
 
     render(): ReactElement {
         const {
-            isPlaying
+            audioNode,
         } = this.state
-        if (isPlaying) {
+        if (audioNode) {
             return <button onClick={this.onClickStop}>停止</button>
         } else {
             return <button onClick={this.onClickStart}>播放</button>

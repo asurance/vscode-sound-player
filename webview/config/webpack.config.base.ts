@@ -36,6 +36,10 @@ const config = {
                         },
                     },]
             },
+            {
+                test: /\.wasm$/,
+                type: 'asset/resource',
+            }
         ]
     },
     plugins: [
@@ -43,7 +47,12 @@ const config = {
         new MiniCssExtractPlugin(),
     ],
     resolve: {
-        extensions: ['.ts', '.js', '.tsx']
+        extensions: ['.ts', '.js', '.tsx'],
+        fallback: {
+            path: false,
+            fs: false,
+            crypto: false,
+        }
     },
     output: {
         filename: '[name].js',
