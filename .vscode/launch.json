@@ -1,31 +1,27 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Debug Main",
-            "type": "extensionHost",
-            "request": "launch",
-            "runtimeExecutable": "${execPath}",
-            "args": [
-                "--extensionDevelopmentPath=${workspaceFolder}"
-            ],
-            "outFiles": [
-                "${workspaceFolder}/dist/**/*.js"
-            ],
-            "internalConsoleOptions": "openOnSessionStart",
-            "sourceMaps": true
-        },
-        {
-            "name": "Debug Webview",
-            "type": "chrome",
-            "request": "launch",
-            "url": "http://localhost:10086",
-            "webRoot": "${workspaceFolder}/webview",
-            "internalConsoleOptions": "neverOpen",
-            "sourceMaps": true,
-            "sourceMapPathOverrides": {
-                "webpack://vscode-sound-player/./*": "${workspaceFolder}/*"
-            }
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Main",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug Webview",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:10086",
+      "webRoot": "${workspaceFolder}/webview",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack://vscode-sound-player/./*": "${workspaceFolder}/*"
+      }
+    }
+  ]
 }
