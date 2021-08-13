@@ -3,33 +3,25 @@ env:
   es6: true
   node: true
 extends:
-  - "eslint:recommended"
-  - "plugin:react/recommended"
-  - "plugin:@typescript-eslint/eslint-recommended"
-  - "plugin:@typescript-eslint/recommended"
-  - "plugin:react-hooks/recommended"
+  - 'eslint:recommended'
+  - 'plugin:react/recommended'
+  - 'plugin:@typescript-eslint/eslint-recommended'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:react-hooks/recommended'
+  - 'eslint-config-prettier'
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
-parser: "@typescript-eslint/parser"
+parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: 2018
   sourceType: module
 plugins:
-  - "react"
-  - "@typescript-eslint"
+  - 'react'
+  - '@typescript-eslint'
+  - 'prettier'
 rules:
-  indent:
-    - error
-    - 4
-    - SwitchCase: 1
-  quotes:
-    - error
-    - single
-  semi:
-    - error
-    - never
-  "@typescript-eslint/no-non-null-assertion":
+  '@typescript-eslint/no-non-null-assertion':
     - off
-  "@typescript-eslint/interface-name-prefix":
+  '@typescript-eslint/interface-name-prefix':
     - off

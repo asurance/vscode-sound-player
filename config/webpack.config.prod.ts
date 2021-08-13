@@ -5,14 +5,16 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
 
 const config = {
-    mode: 'production',
-    plugins: [
-        new CleanWebpackPlugin()
+  mode: 'production',
+  plugins: [new CleanWebpackPlugin()],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+      }) as unknown as WebpackPluginInstance,
     ],
-    optimization: {
-        minimize: true,
-        minimizer: [new TerserPlugin({ extractComments: false }) as unknown as WebpackPluginInstance]
-    }
+  },
 } as Configuration
 
 export default Merge(BaseConfig, config)

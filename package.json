@@ -1,85 +1,88 @@
 {
-    "name": "vscode-sound-player",
-    "version": "0.0.2",
-    "main": "./dist/extension.js",
-    "repository": {
-        "url": "https://github.com/asurance/vscode-sound-player.git"
-    },
-    "homepage": "https://github.com/asurance/vscode-sound-player/blob/master/README.md",
-    "bugs": {
-        "url": "https://github.com/asurance/vscode-sound-player/issues"
-    },
-    "author": "asurance <784672616@qq.com>",
-    "publisher": "asurance",
-    "displayName": "声音播放器",
-    "categories": [
-        "Other"
-    ],
-    "keywords": [
-        "mp3",
-        "sound",
-        "audio",
-        "player"
-    ],
-    "license": "MIT",
-    "preview": true,
-    "private": true,
-    "devDependencies": {
-        "@types/node": "^14.14.22",
-        "@types/react": "^17.0.1",
-        "@types/react-dom": "^17.0.0",
-        "@types/terser-webpack-plugin": "^5.0.2",
-        "@types/vscode": "^1.52.0",
-        "@typescript-eslint/eslint-plugin": "^4.14.2",
-        "@typescript-eslint/parser": "^4.14.2",
-        "audio-file-decoder": "^2.1.0",
-        "clean-webpack-plugin": "^3.0.0",
-        "cross-env": "^7.0.3",
-        "css-loader": "^5.0.1",
-        "eslint": "^7.19.0",
-        "eslint-plugin-react": "^7.22.0",
-        "eslint-plugin-react-hooks": "^4.2.0",
-        "html-webpack-plugin": "^4.5.1",
-        "mini-css-extract-plugin": "^1.3.5",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
-        "terser-webpack-plugin": "^5.1.1",
-        "ts-loader": "^8.0.14",
-        "ts-node": "^9.1.1",
-        "typescript": "^4.1.3",
-        "webpack": "^5.20.0",
-        "webpack-cli": "^3.3.12",
-        "webpack-dev-server": "^3.11.2",
-        "webpack-merge": "^5.7.3"
-    },
-    "activationEvents": [
-        "onCustomEditor:asurance.soundplayer"
-    ],
-    "icon": "icon.gif",
-    "contributes": {
-        "customEditors": [
-            {
-                "viewType": "asurance.soundplayer",
-                "displayName": "声音播放器",
-                "selector": [
-                    {
-                        "filenamePattern": "*.{mp3,wav,ogg,flac,aac,m4a}"
-                    }
-                ],
-                "priority": "default"
-            }
-        ]
-    },
-    "engines": {
-        "vscode": "^1.52.0"
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run build:prod",
-        "build_main:dev": "cross-env TS_NODE_PROJECT=\"config/tsconfig.json\" webpack --config config/webpack.config.dev.ts",
-        "build_main:prod": "cross-env TS_NODE_PROJECT=\"config/tsconfig.json\" webpack --config config/webpack.config.prod.ts",
-        "build_webview:prod": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack --config webview/config/webpack.config.prod.ts",
-        "start:webview": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack-dev-server --progress --config webview/config/webpack.config.dev.ts",
-        "build:dev": "npm run build_main:dev && npm run build_webview:prod",
-        "build:prod": "npm run build_main:prod && npm run build_webview:prod"
-    }
+  "name": "vscode-sound-player",
+  "version": "0.0.2",
+  "main": "./dist/extension.js",
+  "repository": {
+    "url": "https://github.com/asurance/vscode-sound-player.git"
+  },
+  "homepage": "https://github.com/asurance/vscode-sound-player/blob/master/README.md",
+  "bugs": {
+    "url": "https://github.com/asurance/vscode-sound-player/issues"
+  },
+  "author": "asurance <784672616@qq.com>",
+  "publisher": "asurance",
+  "displayName": "声音播放器",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "mp3",
+    "sound",
+    "audio",
+    "player"
+  ],
+  "license": "MIT",
+  "preview": true,
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.0",
+    "@types/terser-webpack-plugin": "^5.0.2",
+    "@types/vscode": "^1.52.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "audio-file-decoder": "^2.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^4.5.1",
+    "mini-css-extract-plugin": "^1.3.5",
+    "prettier": "^2.3.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "terser-webpack-plugin": "^5.1.1",
+    "ts-loader": "^8.0.14",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3",
+    "webpack": "^5.20.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  },
+  "activationEvents": [
+    "onCustomEditor:asurance.soundplayer"
+  ],
+  "icon": "icon.gif",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "asurance.soundplayer",
+        "displayName": "声音播放器",
+        "selector": [
+          {
+            "filenamePattern": "*.{mp3,wav,ogg,flac,aac,m4a}"
+          }
+        ],
+        "priority": "default"
+      }
+    ]
+  },
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build:prod",
+    "build_main:dev": "cross-env TS_NODE_PROJECT=\"config/tsconfig.json\" webpack --config config/webpack.config.dev.ts",
+    "build_main:prod": "cross-env TS_NODE_PROJECT=\"config/tsconfig.json\" webpack --config config/webpack.config.prod.ts",
+    "build_webview:prod": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack --config webview/config/webpack.config.prod.ts",
+    "start:webview": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack-dev-server --progress --config webview/config/webpack.config.dev.ts",
+    "build:dev": "npm run build_main:dev && npm run build_webview:prod",
+    "build:prod": "npm run build_main:prod && npm run build_webview:prod"
+  }
 }

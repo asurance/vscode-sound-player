@@ -1,18 +1,18 @@
 {
-    "compilerOptions": {
-        "target": "es2017",
-        "module": "ESNext",
-        "jsx": "react",
-        "sourceMap": true,
-        "outDir": "dist",
-        "strict": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
-        "strictPropertyInitialization": true,
-        "alwaysStrict": true,
-        "esModuleInterop": true,
-        "moduleResolution": "node",
-        "forceConsistentCasingInFileNames": true,
-    }
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "ESNext",
+    "jsx": "react",
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true
+  }
 }

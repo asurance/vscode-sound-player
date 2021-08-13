@@ -6,17 +6,19 @@ import { resolve } from 'path'
 import TerserPlugin from 'terser-webpack-plugin'
 
 const config = {
-    entry: {
-        index: resolve(__dirname, '../src/index.tsx')
-    },
-    mode: 'production',
-    plugins: [
-        new CleanWebpackPlugin()
+  entry: {
+    index: resolve(__dirname, '../src/index.tsx'),
+  },
+  mode: 'production',
+  plugins: [new CleanWebpackPlugin()],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+      }) as unknown as WebpackPluginInstance,
     ],
-    optimization: {
-        minimize: true,
-        minimizer: [new TerserPlugin({ extractComments: false }) as unknown as WebpackPluginInstance]
-    }
+  },
 } as Configuration
 
 export default Merge(BaseConfig, config)
