@@ -1,4 +1,5 @@
 import test from '../assets/test.mp3'
+import './debug.css'
 
 const empty = () => {
   /** */
@@ -10,6 +11,9 @@ async function main() {
   const context = new AudioContext()
   const audioBuffer = await context.decodeAudioData(buffer)
   console.log(audioBuffer)
+  for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
+    console.log(audioBuffer.getChannelData(i).length)
+  }
   await import('./index')
 }
 

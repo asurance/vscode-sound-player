@@ -81,7 +81,7 @@
     "build_main:dev": "cross-env TS_NODE_PROJECT=\"config/tsconfig.json\" webpack --config config/webpack.config.dev.ts",
     "build_main:prod": "cross-env TS_NODE_PROJECT=\"config/tsconfig.json\" webpack --config config/webpack.config.prod.ts",
     "build_webview:prod": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack --config webview/config/webpack.config.prod.ts",
-    "start:webview": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack-dev-server --progress --config webview/config/webpack.config.dev.ts",
+    "start:webview": "cross-env TS_NODE_PROJECT=\"webview/config/tsconfig.json\" webpack-dev-server --open --progress --config webview/config/webpack.config.dev.ts",
     "build:dev": "npm run build_main:dev && npm run build_webview:prod",
     "build:prod": "npm run build_main:prod && npm run build_webview:prod"
   }
