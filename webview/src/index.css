@@ -1,6 +1,6 @@
 body {
   color: var(--vscode-editor-foreground);
-  font-size: var(--vscode-editor-font-size);
+  font-size: 32px;
   font-family: var(--vscode-editor-font-family);
   font-weight: var(--vscode-editor-font-weight);
   --loadingBgColor: grey;
@@ -43,15 +43,6 @@ body {
   height: 100%;
 }
 
-svg {
-  width: 1em;
-  height: 1em;
-}
-
-svg path {
-  fill: currentColor;
-}
-
 #main {
   height: 100%;
   display: flex;
@@ -60,22 +51,30 @@ svg path {
 }
 
 .loader {
-  width: 2em;
-  height: 2em;
+  width: 1em;
+  height: 1em;
   border-radius: 50%;
-  border: 0.2em solid var(--loadingBgColor);
-  border-left: 0.2em solid currentColor;
+  border: 0.1em solid var(--loadingBgColor);
+  border-left: 0.1em solid currentColor;
   animation: 1s rotate infinite linear;
 }
 
 .warn {
-  display: flex;
-  align-items: center;
-  font-size: 1.5em;
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  border: 0.08em solid currentColor;
+  line-height: 0.9em;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 0.2em;
+  margin-right: 0.5em;
 }
 
-.warn svg {
-  margin-right: 0.5em;
+.warn:before {
+  content: '!';
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
 .play {

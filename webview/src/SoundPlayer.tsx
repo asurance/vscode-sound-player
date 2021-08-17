@@ -25,7 +25,10 @@ const SoundPlayer: FC<Props> = ({ data }: Props) => {
   }, [data])
   const onPlayEnded = useCallback(() => {
     setIsPlaying(false)
-    audioNodeRef.current = null
+    if (audioNodeRef.current) {
+      audioNodeRef.current.onended = null
+      audioNodeRef.current = null
+    }
     nextStartTimeRef.current += audioContext.currentTime - startTimeRef.current
   }, [])
   const onTogglePlaying = useCallback(() => {
@@ -52,7 +55,7 @@ const SoundPlayer: FC<Props> = ({ data }: Props) => {
     setIsPlaying(false)
     audioNodeRef.current?.stop()
     nextStartTimeRef.current = audioBuffer.duration
-  }, [])
+  }, [audioBuffer.duration])
   return (
     <div>
       <button title={isPlaying ? '暂停' : '播放'} onClick={onTogglePlaying}>
