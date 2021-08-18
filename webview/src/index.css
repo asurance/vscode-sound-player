@@ -98,6 +98,27 @@ body {
   background-color: currentColor;
 }
 
+/* .bar {
+  display: inline-block;
+  margin-left: 1em;
+  width: 8em;
+  height: 0.2em;
+  background-color: grey;
+  position: relative;
+  --offset: -0.2em;
+}
+
+.bar:before {
+  position: absolute;
+  display: block;
+  content: '';
+  border: 0.1em solid black;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 0.4em;
+  transform: translate(var(--offset), -0.2em);
+} */
+
 @keyframes rotate {
   from {
     transform: rotate(0);

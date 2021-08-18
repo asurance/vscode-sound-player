@@ -1,61 +1,25 @@
-import React, { FC, useCallback, useMemo, useRef, useState } from 'react'
-import { DecodeResult } from './interfaces'
+import React, { FC, useCallback, useState } from 'react'
+import { SoundObject } from './SoundObject'
 
 type Props = {
-  data: DecodeResult
+  source: SoundObject
 }
 
-const audioContext = new AudioContext()
-
-const SoundPlayer: FC<Props> = ({ data }: Props) => {
+const SoundPlayer: FC<Props> = ({ source }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false)
-  const startTimeRef = useRef(0)
-  const nextStartTimeRef = useRef(0)
-  const audioNodeRef = useRef<AudioBufferSourceNode | null>(null)
-  const audioBuffer = useMemo(() => {
-    const audioBuffer = audioContext.createBuffer(
-      data.channelCount,
-      data.channelData.length,
-      data.sampleRate,
-    )
-    for (let i = 0; i < data.channelCount; i++) {
-      audioBuffer.copyToChannel(data.channelData, i)
-    }
-    return audioBuffer
-  }, [data])
-  const onPlayEnded = useCallback(() => {
-    setIsPlaying(false)
-    if (audioNodeRef.current) {
-      audioNodeRef.current.onended = null
-      audioNodeRef.current = null
-    }
-    nextStartTimeRef.current += audioContext.currentTime - startTimeRef.current
-  }, [])
   const onTogglePlaying = useCallback(() => {
     if (isPlaying) {
-      audioNodeRef.current?.stop()
+      source.pause()
       setIsPlaying(false)
     } else {
-      const audioNode = audioContext.createBufferSource()
-      audioNode.buffer = audioBuffer
-      audioNode.connect(audioContext.destination)
-      audioNode.onended = onPlayEnded
-      audioNode.start(
-        0,
-        nextStartTimeRef.current > audioBuffer.duration
-          ? 0
-          : nextStartTimeRef.current,
-      )
-      startTimeRef.current = audioContext.currentTime
-      audioNodeRef.current = audioNode
+      source.play()
       setIsPlaying(true)
     }
-  }, [audioBuffer, isPlaying, onPlayEnded])
+  }, [isPlaying, source])
   const onClickStop = useCallback(() => {
+    source.stop()
     setIsPlaying(false)
-    audioNodeRef.current?.stop()
-    nextStartTimeRef.current = audioBuffer.duration
-  }, [audioBuffer.duration])
+  }, [source])
   return (
     <div>
       <button title={isPlaying ? '暂停' : '播放'} onClick={onTogglePlaying}>
