@@ -6,7 +6,7 @@ export class SoundObject {
   private audioBuffer: AudioBuffer
   private audioNode: AudioBufferSourceNode | null = null
   private startMS = 0
-  private curPosition = 0
+  private startPosition = 0
   constructor(data: DecodeResult) {
     const audioBuffer = audioContext.createBuffer(
       data.channelCount,
@@ -24,7 +24,7 @@ export class SoundObject {
     const audioNode = audioContext.createBufferSource()
     audioNode.buffer = this.audioBuffer
     audioNode.connect(audioContext.destination)
-    audioNode.start(0, this.curPosition)
+    audioNode.start(0, this.startPosition)
     audioNode.onended = this.onPlayEnd
     this.audioNode = audioNode
     this.startMS = Date.now()
@@ -33,15 +33,15 @@ export class SoundObject {
   pause(): void {
     this.destoryAudioNode()
     const played = Date.now() - this.startMS
-    this.curPosition += played / 1000
-    if (this.curPosition >= this.audioBuffer.duration) {
-      this.curPosition = 0
+    this.startPosition += played / 1000
+    if (this.startPosition >= this.audioBuffer.duration) {
+      this.startPosition = 0
     }
   }
 
   stop(): void {
     this.destoryAudioNode()
-    this.curPosition = 0
+    this.startPosition = 0
   }
 
   get isPlaying(): boolean {
@@ -49,12 +49,20 @@ export class SoundObject {
   }
 
   get position(): number {
-    return this.curPosition
+    if (this.isPlaying) {
+      return this.startPosition + (Date.now() - this.startMS) / 1000
+    } else {
+      return this.startPosition
+    }
+  }
+
+  get length(): number {
+    return this.audioBuffer.duration
   }
 
   private onPlayEnd = () => {
     this.destoryAudioNode()
-    this.curPosition = 0
+    this.startPosition = 0
   }
 
   private destoryAudioNode() {

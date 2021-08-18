@@ -43,6 +43,10 @@ body {
   height: 100%;
 }
 
+button {
+  outline: none;
+}
+
 #main {
   height: 100%;
   display: flex;

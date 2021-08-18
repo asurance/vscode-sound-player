@@ -1,0 +1,36 @@
+.slider {
+  position: relative;
+  width: 200px;
+}
+
+.slider > .rail {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: grey;
+}
+
+.slider > .track {
+  position: absolute;
+  height: 4px;
+  border-radius: 2px;
+  background-color: blue;
+}
+
+.slider > .handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: white;
+  box-sizing: border-box;
+  outline: none;
+  border: 2px solid blue;
+  margin-left: -7px;
+  margin-top: -5px;
+}
+
+.slider > .handle:focus {
+  box-shadow: 0 0 0 2px rgba(0, 0, 255, 50%);
+}
