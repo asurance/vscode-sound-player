@@ -1,6 +1,6 @@
 {
   "name": "vscode-sound-player",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/extension.js",
   "repository": {
     "url": "https://github.com/asurance/vscode-sound-player.git"
@@ -58,7 +58,7 @@
   "activationEvents": [
     "onCustomEditor:asurance.soundplayer"
   ],
-  "icon": "icon.gif",
+  "icon": "icon.png",
   "contributes": {
     "customEditors": [
       {
