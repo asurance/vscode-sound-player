@@ -20,45 +20,45 @@ body {
   --button-inner-shadow: var(--color1);
   --button-background: var(--color3);
   --button-outer-shadow: var(--color4);
-  --slider-rail: var(--color1);
+  --slider-rail: var(--color0);
   --slider-track: var(--color5);
-  --slider-handle: var(--color1);
+  --slider-handle: var(--color0);
   --slider-handle-border: var(--color5);
   --slider-handle-shadow: var(--color4);
 }
 
 body.vscode-dark {
-  --loading-background: grey;
-  --loading-highlight: grey;
-  --foreground: grey;
-  --sound-player-background: grey;
-  --sound-player-outer-shadow: grey;
-  --sound-player-inner-shadow: grey;
-  --button-background: grey;
-  --button-outer-shadow: grey;
-  --button-inner-shadow: grey;
-  --slider-rail: grey;
-  --slider-track: grey;
-  --slider-handle: grey;
-  --slider-handle-border: grey;
-  --slider-handle-shadow: grey;
+  --loading-background: var(--color7);
+  --loading-highlight: var(--color3);
+  --foreground: var(--color7);
+  --sound-player-inner-shadow: var(--color5);
+  --sound-player-background: var(--color6);
+  --sound-player-outer-shadow: var(--color8);
+  --button-inner-shadow: var(--color4);
+  --button-background: var(--color5);
+  --button-outer-shadow: var(--color7);
+  --slider-rail: var(--color4);
+  --slider-track: var(--color7);
+  --slider-handle: var(--color4);
+  --slider-handle-border: var(--color7);
+  --slider-handle-shadow: var(--color6);
 }
 
 body.vscode-high-contrast {
-  --loading-background: grey;
-  --loading-highlight: grey;
-  --foreground: grey;
-  --sound-player-background: grey;
-  --sound-player-outer-shadow: grey;
-  --sound-player-inner-shadow: grey;
-  --button-background: grey;
-  --button-outer-shadow: grey;
-  --button-inner-shadow: grey;
-  --slider-rail: grey;
-  --slider-track: grey;
-  --slider-handle: grey;
-  --slider-handle-border: grey;
-  --slider-handle-shadow: grey;
+  --loading-background: var(--color8);
+  --loading-highlight: var(--color0);
+  --foreground: var(--color8);
+  --sound-player-inner-shadow: var(--color0);
+  --sound-player-background: var(--color4);
+  --sound-player-outer-shadow: var(--color8);
+  --button-inner-shadow: var(--color2);
+  --button-background: var(--color4);
+  --button-outer-shadow: var(--color6);
+  --slider-rail: var(--color0);
+  --slider-track: var(--color8);
+  --slider-handle: var(--color0);
+  --slider-handle-border: var(--color8);
+  --slider-handle-shadow: var(--color7);
 }
 
 html,
