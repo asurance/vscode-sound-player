@@ -77,7 +77,7 @@ button {
   border-radius: 50%;
   text-align: center;
   background-color: var(--button-background);
-  color: currentColor;
+  color: var(--foreground);
   transition: box-shadow 0.5s;
   box-shadow: 4px 6px 8px var(--button-outer-shadow),
     -4px -2px 8px var(--button-inner-shadow);
@@ -96,7 +96,7 @@ button:active {
 #main {
   font-size: 32px;
   font-family: var(--vscode-editor-font-family);
-  color: var(--foreground);
+  color: var(--vscode-editor-foreground);
   height: 100%;
   display: flex;
   justify-content: center;
