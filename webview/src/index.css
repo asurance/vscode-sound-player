@@ -176,6 +176,7 @@ button:active {
 
 .sound-player .slider {
   width: 10em;
+  user-select: none;
 }
 
 .sound-player .slider > .rail {
