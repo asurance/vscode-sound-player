@@ -33,6 +33,7 @@ class SoundPlayer extends Component<Props, State> {
   }
 
   private play() {
+    this.isPause = false
     const audioNode = audioContext.createBufferSource()
     audioNode.buffer = this.props.audioBuffer
     audioNode.connect(audioContext.destination)
@@ -78,7 +79,6 @@ class SoundPlayer extends Component<Props, State> {
   }
 
   private onPlayEnd = () => {
-    console.log('stop')
     if (this.audioNode) {
       this.audioNode.onended = null
       this.audioNode.stop()
@@ -122,22 +122,25 @@ class SoundPlayer extends Component<Props, State> {
   render(): ReactNode {
     const { isPlaying, position } = this.state
     return (
-      <div>
-        <button
-          title={isPlaying ? '暂停' : '播放'}
-          onClick={this.onTogglePlaying}
-        >
-          {isPlaying ? <div className="pause" /> : <div className="play" />}
-        </button>
-        <button title="停止" onClick={this.onClickStop}>
-          <div className="stop" />
-        </button>
+      <div className="sound-player">
         <Slider
           value={position}
+          title="进度"
           onValueChange={this.onPositionChange}
           onValueChangeStart={this.onPositionChangeStart}
           onValueChangeEnd={this.onPositionChangeEnd}
         />
+        <div className="controls">
+          <button
+            title={isPlaying ? '暂停' : '播放'}
+            onClick={this.onTogglePlaying}
+          >
+            {isPlaying ? <div className="pause" /> : <div className="play" />}
+          </button>
+          <button title="停止" onClick={this.onClickStop}>
+            <div className="stop" />
+          </button>
+        </div>
       </div>
     )
   }

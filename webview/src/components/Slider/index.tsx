@@ -10,20 +10,29 @@ import { calcValue } from './Utils'
 type Props = {
   value: number
   className?: string[]
-  tabIndex?: number
+  title?: string
   onValueChange?(value: number): void
   onValueChangeStart?(value: number): void
   onValueChangeEnd?(value: number): void
 }
 
-class Slider extends Component<Props> {
+type State = {
+  move: boolean
+}
+
+class Slider extends Component<Props, State> {
   private sliderRef = createRef<HTMLDivElement>()
+
+  state = {
+    move: false,
+  }
 
   private onMouseDown = (evt: ReactMouseEvent) => {
     const value = calcValue(evt.pageX, this.sliderRef.current)
     this.props.onValueChangeStart?.(value)
     value !== this.props.value && this.props.onValueChange?.(value)
     this.addDocumentEvents()
+    this.setState({ move: true })
   }
 
   private onMouseMove = (evt: MouseEvent) => {
@@ -36,6 +45,7 @@ class Slider extends Component<Props> {
     value !== this.props.value && this.props.onValueChange?.(value)
     this.props.onValueChangeEnd?.(value)
     this.removeDocumentEvents()
+    this.setState({ move: false })
   }
 
   private addDocumentEvents() {
@@ -53,17 +63,23 @@ class Slider extends Component<Props> {
   }
 
   render(): ReactNode {
-    const { value, className = [], tabIndex = 0 } = this.props
+    const { value, className = [], title } = this.props
+    const { move } = this.state
     const percent = `${value * 100}%`
+    const handleClass = ['handle']
+    if (move) {
+      handleClass.push('move')
+    }
     return (
       <div
         className={[...className, 'slider'].join(' ')}
         onMouseDown={this.onMouseDown}
         ref={this.sliderRef}
+        title={title}
       >
         <div className="rail" />
         <div className="track" style={{ width: percent }} />
-        <div tabIndex={tabIndex} className="handle" style={{ left: percent }} />
+        <div className={handleClass.join(' ')} style={{ left: percent }} />
       </div>
     )
   }

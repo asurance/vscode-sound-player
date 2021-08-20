@@ -1,39 +1,65 @@
+:root {
+  --color0: #f8f9fa;
+  --color1: #e9ecef;
+  --color2: #dee2e6;
+  --color3: #ced4da;
+  --color4: #adb5bd;
+  --color5: #6c757d;
+  --color6: #495057;
+  --color7: #343a40;
+  --color8: #212529;
+}
+
 body {
-  color: var(--vscode-editor-foreground);
-  font-size: 32px;
-  font-family: var(--vscode-editor-font-family);
-  font-weight: var(--vscode-editor-font-weight);
-  --loadingBgColor: grey;
+  --loading-background: var(--color5);
+  --loading-highlight: var(--color2);
+  --foreground: var(--color5);
+  --sound-player-inner-shadow: var(--color0);
+  --sound-player-background: var(--color2);
+  --sound-player-outer-shadow: var(--color3);
+  --button-inner-shadow: var(--color1);
+  --button-background: var(--color3);
+  --button-outer-shadow: var(--color4);
+  --slider-rail: var(--color1);
+  --slider-track: var(--color5);
+  --slider-handle: var(--color1);
+  --slider-handle-border: var(--color5);
+  --slider-handle-shadow: var(--color4);
 }
 
 body.vscode-dark {
-  --loadingBgColor: grey;
+  --loading-background: grey;
+  --loading-highlight: grey;
+  --foreground: grey;
+  --sound-player-background: grey;
+  --sound-player-outer-shadow: grey;
+  --sound-player-inner-shadow: grey;
+  --button-background: grey;
+  --button-outer-shadow: grey;
+  --button-inner-shadow: grey;
+  --slider-rail: grey;
+  --slider-track: grey;
+  --slider-handle: grey;
+  --slider-handle-border: grey;
+  --slider-handle-shadow: grey;
 }
 
 body.vscode-high-contrast {
-  --loadingBgColor: grey;
+  --loading-background: grey;
+  --loading-highlight: grey;
+  --foreground: grey;
+  --sound-player-background: grey;
+  --sound-player-outer-shadow: grey;
+  --sound-player-inner-shadow: grey;
+  --button-background: grey;
+  --button-outer-shadow: grey;
+  --button-inner-shadow: grey;
+  --slider-rail: grey;
+  --slider-track: grey;
+  --slider-handle: grey;
+  --slider-handle-border: grey;
+  --slider-handle-shadow: grey;
 }
-
-/* :not(textarea)::selection {
-  background: none;
-}
-
-button {
-  white-space: nowrap;
-  background-color: var(--vscode-button-background);
-  color: var(--vscode-button-foreground);
-  border-color: var(--vscode-button-background);
-}
-
-button:hover {
-  background-color: var(--vscode-button-hoverBackground);
-}
-
-button:disabled {
-  background-color: var(--vscode-button-secondaryBackground);
-  color: var(--vscode-button-secondaryForeground);
-  border-color: var(--vscode-button-secondaryBackground);
-} */
 
 html,
 body {
@@ -45,9 +71,32 @@ body {
 
 button {
   outline: none;
+  width: 4.2em;
+  height: 4.2em;
+  border: 0;
+  border-radius: 50%;
+  text-align: center;
+  background-color: var(--button-background);
+  color: currentColor;
+  transition: box-shadow 0.5s;
+  box-shadow: 4px 6px 8px var(--button-outer-shadow),
+    -4px -2px 8px var(--button-inner-shadow);
+}
+
+button:hover {
+  box-shadow: 2px 3px 4px var(--button-outer-shadow),
+    -2px -1px 4px var(--button-inner-shadow);
+}
+
+button:active {
+  box-shadow: 1px 1.5px 2px var(--button-outer-shadow),
+    -1px -0.5px 2px var(--button-inner-shadow);
 }
 
 #main {
+  font-size: 32px;
+  font-family: var(--vscode-editor-font-family);
+  color: var(--foreground);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -58,8 +107,8 @@ button {
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  border: 0.1em solid var(--loadingBgColor);
-  border-left: 0.1em solid currentColor;
+  border: 0.1em solid var(--loading-background);
+  border-left: 0.1em solid var(--loading-highlight);
   animation: 1s rotate infinite linear;
 }
 
@@ -71,7 +120,6 @@ button {
   line-height: 0.9em;
   vertical-align: middle;
   text-align: center;
-  margin-top: 0.2em;
   margin-right: 0.5em;
 }
 
@@ -84,44 +132,76 @@ button {
 .play {
   width: 0;
   height: 0;
-  border-left: 1em solid currentColor;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-left: 1.8em solid currentColor;
+  border-top: 0.9em solid transparent;
+  border-bottom: 0.9em solid transparent;
+  margin: auto;
+  transform: translateX(0.2em);
 }
 
 .pause {
-  width: 0.6em;
-  height: 1em;
-  border-left: 0.2em solid currentColor;
-  border-right: 0.2em solid currentColor;
+  width: 1em;
+  height: 1.8em;
+  border-left: 0.3em solid currentColor;
+  border-right: 0.3em solid currentColor;
+  margin: auto;
 }
 
 .stop {
-  width: 1em;
-  height: 1em;
+  width: 1.8em;
+  height: 1.8em;
   background-color: currentColor;
+  margin: auto;
 }
 
-/* .bar {
-  display: inline-block;
-  margin-left: 1em;
-  width: 8em;
-  height: 0.2em;
-  background-color: grey;
-  position: relative;
-  --offset: -0.2em;
+.sound-player {
+  width: 12em;
+  height: 4em;
+  background-color: var(--sound-player-background);
+  border-radius: 2em;
+  padding: 1em 1em 0em 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: box-shadow 0.5s;
+  box-shadow: 6px 8px 12px var(--sound-player-outer-shadow),
+    -6px -4px 12px var(--sound-player-inner-shadow);
 }
 
-.bar:before {
-  position: absolute;
-  display: block;
-  content: '';
-  border: 0.1em solid black;
-  width: 0.4em;
-  height: 0.4em;
-  border-radius: 0.4em;
-  transform: translate(var(--offset), -0.2em);
-} */
+.sound-player:hover {
+  box-shadow: 3px 4px 6px var(--sound-player-outer-shadow),
+    -3px -2px 6px var(--sound-player-inner-shadow);
+}
+
+.sound-player .slider {
+  width: 10em;
+}
+
+.sound-player .slider > .rail {
+  background-color: var(--slider-rail);
+}
+
+.sound-player .slider > .track {
+  background-color: var(--slider-track);
+}
+
+.sound-player .slider > .handle {
+  transition: box-shadow 0.5s;
+  background-color: var(--slider-handle);
+  border-color: var(--slider-handle-border);
+}
+
+.sound-player .slider > .handle.move,
+.sound-player .slider > .handle:hover {
+  box-shadow: 0 0 0 1px var(--slider-handle-shadow);
+}
+
+.sound-player .controls {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+}
 
 @keyframes rotate {
   from {
