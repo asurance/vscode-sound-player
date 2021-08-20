@@ -1,4 +1,5 @@
 .vscode
+.prettierrc.yml
 config
 src
 webview
