@@ -6,7 +6,13 @@
 
 ## 功能
 
-- 播放/停止
+- 播放/暂停
+- 停止
+- 时间进度条
+
+## 预览
+
+![预览](preview.png)
 
 ## 技术点
 
@@ -15,13 +21,13 @@
 
 ## 问题
 
-`audio-file-decoder`在解码多声道音频时会只有单声道的数据且似乎有几率有问题
-
-## 额外
-
-如果你有知道有其他 nodejs 端进行音频解码的库，欢迎给我提[issue](https://github.com/asurance/vscode-sound-player/issues)好继续开发。
-对库的要求是能获取到音频的采样率，采样帧数，通道数和每个通道内的音频数据。
+`audio-file-decoder`目前在解码部分音频时仍存在问题，请以专业播放器播放的效果为准。
 
 ## 提示
 
-如果你也在开发 vscode 的插件，并且发现其 webview 无法播放声音，那么这边有一种途径是可行的(也就是本插件正在使用的)。extension 端对音频进行解码传给 webview 端，webview 端使用`audio context`api 进行声音播放。
+如果你也在开发 vscode 的插件，并且需要在 webview 端播放声音但发现无法播放声音，那么这边有一种途径是可行的(也就是本插件正在使用的)。插件自己对音频进行解码并使用[audio context](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext)api 进行播放。
+
+## 额外
+
+如果你有知道有其他 js 音频解码的库，欢迎给我提[issue](https://github.com/asurance/vscode-sound-player/issues)。
+对库的要求是能获取到音频的采样率，采样帧数，通道数和每个通道内的音频数据。
